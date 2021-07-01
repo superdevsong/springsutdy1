@@ -20,6 +20,8 @@ public class Program {
 		ApplicationContext context = new ClassPathXmlApplicationContext("spring/di/setting.xml");
 		//spring context인데 이걸로 xml의 빈의 내용을 불러와 구현하는거야 이쪽에서는 가져오기만 하면되는거지
 		//ExamConsole console = (ExamConsole) context.getBean("console");
+		Exam exam = context.getBean(Exam.class);//Exam class와 유사한 내용을 setting에서 가져옴
+		System.out.println(exam.toString());
 		ExamConsole console = context.getBean(ExamConsole.class);
 		//위에껄로 구현해도 되고 아래꺼로 해두되는데 아래꺼가 캐스팅 안하고 편하지 xml의 내용중에 class형식의 맞는걸 찾아오는 함수야
 		console.print();

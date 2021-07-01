@@ -1,25 +1,19 @@
-제가 봤을대 이해하기위한 readme다소 반말과 막말이 써져있을수있습니다. 양해좀 부탁드립니다.. 꾸벅
-나의 자바 프로젝트를 보면 알겠지만 여러인터페이스와 클래스를 구현해놓았어그거에대한 설명은 굳이 안할게 자바에 
-주석으로 해놓았거든 일단 여러인터페이스와 클래스를 구현한거는 스프링의 dependency injection을 보여주기위해서야
-스프링을 이클립스에서 이클립스 마켓플레이스에서 다운을받아서 내가만든 프로젝트의 program.java가 있는 spring.di패키지에
-springbaenconfiguarefile(xml)을 추가했어 xml 말고도 다른방법이 있다지만 일단 지금은 xml만 배워서 xml을 추가했어 실제로 xml을 회사에서는
-아직 많이 쓰고있다고해 내가 jsp를 배울때 빈즈라는걸 사용했잖아 이빈즈와 스프링의 configue은 비슷한게 많아 자 설명해볼게
-원래 우리는 스프링을 사용하지않는다면 만약에
-<!--  * Exam exam = new SongExam();
-		ExamConsole console  = new GridExamConsole();
-		console.setExam(exam); 이 내용을 여기서 빈즈로구현-->
-위와같은 내용이 있다하면 GridExam에서 다른 Exam으로 바꾼다면 단순한얘기야 저기서 그냥 GridExam을 바꾸면 될거야
-하지만 나중에 코드가 다양해지고 대규모로 커진다면 코드하나 잘못건들면 확가자너? 그래서 유지보수를 더 쉽고 안전하게 할방법이 필요할거야
-그래서 우리가 스프링을 배우는거자너 그래서 스프링에서는 방금 내가말한 xml을 통해서 위에 코드를 구현해놓고
-클래스가 바뀌거나 내용이 바뀌면 그 xml의 내용만 슬쩍 고치면 해결되는거야 프로젝트에는 이미 내가 구현해 놓았으므로 그 규칙을 좀 말하자면
-bean 태그: id property:생성한 인스턴스의 명 class:생성할 인스턴스객체의 클래스정보
-id를 통해 저쪽에서 값을 가져올수있고 클래슨느 클래스의 패키지정보까지 명확히 적어야되 중복되는 클래스가 있을수 있으니까
-baen 태그 안에서 <property> 태그가 있을수 있어
-<property>는 set태그를 가져올때 쓰는 함수야 일단 내가배운거에서는 그렇게만 쓰고있어 뒤에가서 다른 사용법이 나올수있어!
-아무튼 <property>에 name property는 자바빈즈와 비슷한데 만약 setExam이라는 함수가 있다면 name에는 exam만 적어주면 알아서
-불러와 예시를 하나 더들어서 setKor이런 함수있으면 name을 kor이라고 해야 가져오겠지?
-그리고 name 다음에는 ref 혹은 value의 프로퍼티를 추가해야되는데 그값이 객체와 같은 참조형이면 ref int와 같은 값이면
-vlaue야 이 내용과 코드를 보면 아마 이해할거야 까먹어서 이해못할거 같으니 내가 구현한 프로젝트로 예시를 들면
-<property name="kor" value="20"></property> 요거있지? 요거는 setKor함수를 불러서 20으로 설정하는 함수고
-<property name="exam" ref="exam"/> 요거는 아마 그위에 exam이라는 빈 하나 있을건데 그 객체를 참조해서 setExam함수에 매개변수로 넣는다는것
-오늘 설명은 여기까지!!
+뉴렉님 유튜브 강의 10강을 들은 정리해본 내용입니다.
+오늘 배운거는 그전에 배웠던 내용과 비슷하지만 이번에는 생성자에 멤버변수를 초기화할때
+그걸 configurefile 즉 xml을 통해 하는 작업이야 프로젝트에는 써놨지만
+그걸 위해서 준비해야 될게있어 바로 멤버변수를 초기화하는 생성자를 미리 exam에 만들어두는거야
+만약에 만들었다면 프로젝트처럼
+<!-- <constructor-arg name="kor" value="10"></constructor-arg>
+	<constructor-arg name="eng" value="20"></constructor-arg>
+	<constructor-arg name="com" value="30"></constructor-arg>
+	<constructor-arg name="math" value="40"></constructor-arg>-->
+<constructor>태그를 사용해서 대입시킬 값을 name 혹은 index로가져와서 value에 넣어주면됩니당.
+index로 할수도 있겠지만 인덱스로하는것보단 변수를 특정하는 name을 쓰는게 낫겠지? 그리고 추가로
+만약에 타입이 다른 생성자가 두개 있을때 프로퍼티로 type까지 넣어줘서 float int처럼 type형을 대입
+해주면 명시적으로 함수를 생성자를 처리해줄수있어.
+
+여기서 잠깐 이방법으로 값을 대입시킬수있지만 좀길고 귀찬찮아 우리는 늘 사용법을 주려야해
+그래서 나온방법이 <bean id="exam" class="spring.di.entity.SongExam" p:kor="10" p:eng="10" p:math="10" p:com="10" >
+위와같은 방법이ㅑ p:이부분은 namespace인데 namespace는 아마 너도 알겠지만 특정 모듈같은거야 예를들어 이름이 같은 코든데
+그 기능이 다를때 우리가 원하는 코드를 고르기위해 다른 이름을 부여해 그것을 특정 처리기로 처리하거나 구별하기위해 사용해
+즉 그걸 사용해서 저렇게 bean 태그안에서 저렇게 간단하게 값을 대입할수있다는것 오늘은 여기까지

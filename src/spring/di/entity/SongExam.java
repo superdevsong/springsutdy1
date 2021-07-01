@@ -8,6 +8,18 @@ public class SongExam implements Exam {
 	private int eng;
 	private int math;
 	private int com;
+	public SongExam() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	//맴버변수 초기화하는 함수 생성
+	public SongExam(int kor, int eng, int math, int com) {
+		this.kor = kor;
+		this.eng = eng;
+		this.math = math;
+		this.com = com;
+	}
+
 
 	public int getKor() {
 		return kor;
@@ -52,5 +64,11 @@ public class SongExam implements Exam {
 		// TODO Auto-generated method stub
 		return total()/4.0f;
 	}
+	//tostring 함수 추가
+	@Override
+	public String toString() {
+		return "SongExam [kor=" + kor + ", eng=" + eng + ", math=" + math + ", com=" + com + "]";
+	}
+	
 
 }
