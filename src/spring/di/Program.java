@@ -5,8 +5,15 @@ import spring.di.entity.SongExam;
 import spring.di.ui.ExamConsole;
 import spring.di.ui.GridExamConsole;
 import spring.di.ui.InlineExamConsole;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+
+
 
 
 public class Program {
@@ -24,7 +31,12 @@ public class Program {
 		System.out.println(exam.toString());
 		ExamConsole console = context.getBean(ExamConsole.class);
 		//위에껄로 구현해도 되고 아래꺼로 해두되는데 아래꺼가 캐스팅 안하고 편하지 xml의 내용중에 class형식의 맞는걸 찾아오는 함수야
-		console.print();
+		System.out.println(exam.total());
+		List<Exam> exams = (List<Exam>) context.getBean("exams");//Exam을 제누릭으로 받는 컬렉션 생성 
+		
+		for(Exam e :exams)//리스트 출력
+			System.out.println(e);
+		
 	}
 
 }
