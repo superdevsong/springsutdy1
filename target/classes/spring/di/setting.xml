@@ -8,10 +8,11 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 	
-	<context:annotation-config />
-	<!--어노테이션 있는지 확인 -->
-	<bean id="exam" class="spring.di.entity.SongExam" p:kor="10" p:eng="10" p:math="10" p:com="10" >
+	<context:annotation-config />	<!--어노테이션 있는지 확인 -->
 
+	<bean  id ="exam" class="spring.di.entity.SongExam" p:kor="10" p:eng="10" p:math="20" p:com="20" /><!--exam객체 추가  -->
+	<bean  id="exam2" class="spring.di.entity.SongExam" p:kor="10" p:eng="10" p:math="10" p:com="10" ><!--exam객체 추가  -->
+	
 	
 	<!-- <constructor-arg name="kor" value="10"></constructor-arg>
 	<constructor-arg name="eng" value="20"></constructor-arg>
@@ -23,10 +24,7 @@
 	<bean id="console" class="spring.di.ui.GridExamConsole">
 	<!-- <property name="exam" ref="exam"/> setExam 어노테이션 활용을위해 주석!!-->
 	</bean>
-	<util:list id="exams" list-class="java.util.ArrayList">
-		<bean class="spring.di.entity.SongExam" p:kor="1" p:eng="1" p:math="1" p:com="1" />
-		<ref bean="exam"/>
-	</util:list><!--util을 사용해서 컬렉션을 따로만듬  -->
+	
 	<!-- <bean id="exams" class="java.util.ArrayList">
 	<constructor-arg>
 	<list>

@@ -1,6 +1,7 @@
 package spring.di.ui;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import spring.di.entity.Exam;
 
@@ -26,6 +27,7 @@ public class GridExamConsole implements ExamConsole {
 
 	}
 	@Autowired
+	@Qualifier("exam")
 	@Override
 	public void setExam(Exam exam) {
 		/*성적을 받는 dependency injection부분이야
