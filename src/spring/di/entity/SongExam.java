@@ -1,5 +1,8 @@
 package spring.di.entity;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class SongExam implements Exam {
 	/*exam 인터페이스를 상속하는 클래스야
 	 * 내용은 각 과목에대한 변수들 그리고 인터페이스에서 구현한

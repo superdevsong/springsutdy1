@@ -27,7 +27,8 @@ public class Program {
 	
 		//Exam exam = context.getBean(Exam.class);
 		//System.out.println(exam.toString());
-		ExamConsole console = context.getBean(ExamConsole.class);
+		//ExamConsole console = context.getBean(ExamConsole.class);
+		ExamConsole console = (ExamConsole) context.getBean("console");
 		console.print(); //그리드로 출력
 		//List<Exam> exams = (List<Exam>) context.getBean("exams");//Exam을 제누릭으로 받는 컬렉션 생성 
 		

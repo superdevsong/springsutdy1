@@ -2,12 +2,14 @@ package spring.di.ui;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
 import spring.di.entity.Exam;
 
+@Component("console")
 public class GridExamConsole implements ExamConsole {
-	@Autowired(required = false) //Autowired 속성에 required사용해서 exam 알맞은거 없으면 null
-	@Qualifier("exam")
+	@Autowired //Autowired 속성에 required사용해서 exam 알맞은거 없으면 null
+	//@Qualifier("exam")
 	Exam exam;	
 	
 	public GridExamConsole() {
