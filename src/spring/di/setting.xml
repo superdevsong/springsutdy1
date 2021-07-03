@@ -10,17 +10,17 @@
 	
 	<context:annotation-config />	<!--어노테이션 있는지 확인 -->
 
-	<bean  id ="exam" class="spring.di.entity.SongExam" p:kor="10" p:eng="10" p:math="20" p:com="20" /><!--exam객체 추가  -->
-	<bean  id="exam2" class="spring.di.entity.SongExam" p:kor="10" p:eng="10" p:math="10" p:com="10" ><!--exam객체 추가  -->
+	<bean  id ="exam" class="spring.di.entity.SongExam" p:kor="10" p:eng="10" p:math="20" p:com="20" /><!-- exam객체 추가  -->
+	<bean  id="exam2" class="spring.di.entity.SongExam" p:kor="10" p:eng="10" p:math="10" p:com="10" ><!-- exam객체 추가  -->
+
 	
-	
-	<!-- <constructor-arg name="kor" value="10"></constructor-arg>
+	<constructor-arg name="kor" value="10"></constructor-arg>
 	<constructor-arg name="eng" value="20"></constructor-arg>
 	<constructor-arg name="com" value="30"></constructor-arg>
 	<constructor-arg name="math" value="40"></constructor-arg>
-	 -->
-
-	</bean>
+	
+	 
+	</bean> 
 	<bean id="console" class="spring.di.ui.GridExamConsole">
 	<!-- <property name="exam" ref="exam"/> setExam 어노테이션 활용을위해 주석!!-->
 	</bean>

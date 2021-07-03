@@ -6,32 +6,40 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import spring.di.entity.Exam;
 
 public class GridExamConsole implements ExamConsole {
-	Exam exam;
+	@Autowired(required = false) //Autowired 속성에 required사용해서 exam 알맞은거 없으면 null
+	@Qualifier("exam")
+	Exam exam;	
+	
 	public GridExamConsole() {
-		// 여기가 비어있어서 당황스럽겠지만 최초에 내가 구현할때는 아래에있는 생성자로 구현해서 그래
+		System.out.println("constructor");
 	}
 	public GridExamConsole(Exam exam) {
-		//성적을 받는 부분이야
-		super();
+		System.out.println("overloaded constructor");
 		this.exam = exam;
 	}
 
 	@Override
 	public void print() {
 		//성적출력
+		if(exam==null) {
 		System.out.println("┌─────────┬─────────┐");
 		System.out.println("│  total  │   avg   │");
 		System.out.println("├─────────┼─────────┤");
-		 System.out.printf("│   %3d   │  %3.2f   │\n",exam.total(),exam.avg());
+		 System.out.printf("│   0     │    0    │\n");
 		System.out.println("└─────────┴─────────┘");
-
+		}
+		else {
+			System.out.println("┌─────────┬─────────┐");
+			System.out.println("│  total  │   avg   │");
+			System.out.println("├─────────┼─────────┤");
+			 System.out.printf("│   %3d   │  %3.2f   │\n",exam.total(),exam.avg());
+			System.out.println("└─────────┴─────────┘");
+		}
 	}
-	@Autowired
-	@Qualifier("exam")
+	
 	@Override
 	public void setExam(Exam exam) {
-		/*성적을 받는 dependency injection부분이야
-		 * 위에꺼도 맞지만 스프링에서는 여기가 더 효율적이지*/
+		System.out.println("setter");
 		this.exam = exam;
 
 		
