@@ -22,20 +22,17 @@ public class Program {
 		//readme에 이쪽 부분을 더설명해놨어 모르면 참고하도록!!
 		/*스프링에게 지시서르 넘긴다
 		 * Exam exam = new SongExam();
-		ExamConsole console  = new GridExamConsole();
-		console.setExam(exam);-->ㅅsetting.xml로 옮겨버려잇!! setting.xml내용 확인하라고!!*/
+		ExamConsole console  = new GridExamConsole();*/
 		ApplicationContext context = new ClassPathXmlApplicationContext("spring/di/setting.xml");
-		//spring context인데 이걸로 xml의 빈의 내용을 불러와 구현하는거야 이쪽에서는 가져오기만 하면되는거지
-		//ExamConsole console = (ExamConsole) context.getBean("console");
-		Exam exam = context.getBean(Exam.class);//Exam class와 유사한 내용을 setting에서 가져옴
+	
+		Exam exam = context.getBean(Exam.class);
 		System.out.println(exam.toString());
 		ExamConsole console = context.getBean(ExamConsole.class);
-		//위에껄로 구현해도 되고 아래꺼로 해두되는데 아래꺼가 캐스팅 안하고 편하지 xml의 내용중에 class형식의 맞는걸 찾아오는 함수야
-		System.out.println(exam.total());
-		List<Exam> exams = (List<Exam>) context.getBean("exams");//Exam을 제누릭으로 받는 컬렉션 생성 
+		console.print(); //그리드로 출력
+		//List<Exam> exams = (List<Exam>) context.getBean("exams");//Exam을 제누릭으로 받는 컬렉션 생성 
 		
-		for(Exam e :exams)//리스트 출력
-			System.out.println(e);
+		//for(Exam e :exams)//리스트 출력
+		//	System.out.println(e);
 		
 	}
 
