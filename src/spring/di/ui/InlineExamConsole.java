@@ -5,7 +5,7 @@ import spring.di.entity.Exam;
 public class InlineExamConsole implements ExamConsole {
 	private Exam exam;
 	public InlineExamConsole() {
-		// ¿©±â°¡ ºñ¾îÀÖ¾î¼­ ´çÈ²½º·´°ÚÁö¸¸ ÃÖÃÊ¿¡ ³»°¡ ±¸ÇöÇÒ¶§´Â ¾Æ·¡¿¡ÀÖ´Â »ı¼ºÀÚ·Î ±¸ÇöÇØ¼­ ±×·¡
+		// ì—¬ê¸°ê°€ ë¹„ì–´ìˆì–´ì„œ ë‹¹í™©ìŠ¤ëŸ½ê² ì§€ë§Œ ìµœì´ˆì— ë‚´ê°€ êµ¬í˜„í• ë•ŒëŠ” ì•„ë˜ì—ìˆëŠ” ìƒì„±ìë¡œ êµ¬í˜„í•´ì„œ ê·¸ë˜
 	}
 	public InlineExamConsole(Exam exam) {
 		this.exam = exam;
@@ -18,8 +18,8 @@ public class InlineExamConsole implements ExamConsole {
 
 	@Override
 	public void setExam(Exam exam) {
-		/*¼ºÀûÀ» ¹Ş´Â dependency injectionºÎºĞÀÌ¾ß
-		 * À§¿¡²¨µµ ¸ÂÁö¸¸ ½ºÇÁ¸µ¿¡¼­´Â ¿©±â°¡ ´õ È¿À²ÀûÀÌÁö*/
+		/*ì„±ì ì„ ë°›ëŠ” dependency injectionë¶€ë¶„ì´ì•¼
+		 * ìœ„ì—êº¼ë„ ë§ì§€ë§Œ ìŠ¤í”„ë§ì—ì„œëŠ” ì—¬ê¸°ê°€ ë” íš¨ìœ¨ì ì´ì§€*/
 		this.exam = exam;
 		
 	}

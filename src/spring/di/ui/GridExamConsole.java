@@ -8,7 +8,7 @@ import spring.di.entity.Exam;
 
 @Component("console")
 public class GridExamConsole implements ExamConsole {
-	@Autowired //Autowired ¼Ó¼º¿¡ required»ç¿ëÇØ¼­ exam ¾Ë¸ÂÀº°Å ¾øÀ¸¸é null
+	@Autowired //Autowired ì†ì„±ì— requiredì‚¬ìš©í•´ì„œ exam ì•Œë§ì€ê±° ì—†ìœ¼ë©´ null
 	//@Qualifier("exam")
 	Exam exam;	
 	
@@ -22,20 +22,20 @@ public class GridExamConsole implements ExamConsole {
 
 	@Override
 	public void print() {
-		//¼ºÀûÃâ·Â
+		//ì„±ì ì¶œë ¥
 		if(exam==null) {
-		System.out.println("¦£¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¨¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¤");
-		System.out.println("¦¢  total  ¦¢   avg   ¦¢");
-		System.out.println("¦§¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦«¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦©");
-		 System.out.printf("¦¢   0     ¦¢    0    ¦¢\n");
-		System.out.println("¦¦¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦ª¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¥");
+		System.out.println("â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”");
+		System.out.println("â”‚  total  â”‚   avg   â”‚");
+		System.out.println("â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤");
+		 System.out.printf("â”‚   0     â”‚    0    â”‚\n");
+		System.out.println("â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜");
 		}
 		else {
-			System.out.println("¦£¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¨¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¤");
-			System.out.println("¦¢  total  ¦¢   avg   ¦¢");
-			System.out.println("¦§¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦«¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦©");
-			 System.out.printf("¦¢   %3d   ¦¢  %3.2f   ¦¢\n",exam.total(),exam.avg());
-			System.out.println("¦¦¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦ª¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¥");
+			System.out.println("â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”");
+			System.out.println("â”‚  total  â”‚   avg   â”‚");
+			System.out.println("â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤");
+			 System.out.printf("â”‚   %3d   â”‚  %3.2f   â”‚\n",exam.total(),exam.avg());
+			System.out.println("â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜");
 		}
 	}
 	

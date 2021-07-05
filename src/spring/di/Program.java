@@ -10,29 +10,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 
-
-
-
 public class Program {
-
 	public static void main(String[] args) {
-		//readme¿¡ ÀÌÂÊ ºÎºĞÀ» ´õ¼³¸íÇØ³ù¾î ¸ğ¸£¸é Âü°íÇÏµµ·Ï!!
-		/*½ºÇÁ¸µ¿¡°Ô Áö½Ã¼­¸£ ³Ñ±ä´Ù
+		//readmeì— ì´ìª½ ë¶€ë¶„ì„ ë”ì„¤ëª…í•´ë†¨ì–´ ëª¨ë¥´ë©´ ì°¸ê³ í•˜ë„ë¡!!
+		/*ìŠ¤í”„ë§ì—ê²Œ ì§€ì‹œì„œë¥´ ë„˜ê¸´ë‹¤
 		 * Exam exam = new SongExam();
 		ExamConsole console  = new GridExamConsole();*/
-		ApplicationContext context = new ClassPathXmlApplicationContext("spring/di/setting.xml");
+		ApplicationContext context =
+				new AnnotationConfigApplicationContext(SongDiConfig.class);
+				//new ClassPathXmlApplicationContext("spring/di/setting.xml");
 	
 		//Exam exam = context.getBean(Exam.class);
 		//System.out.println(exam.toString());
-		//ExamConsole console = context.getBean(ExamConsole.class);
+		//ExamConsole console = contextâ‰ˆ.getBean(ExamConsole.class);
 		ExamConsole console = (ExamConsole) context.getBean("console");
-		console.print(); //±×¸®µå·Î Ãâ·Â
-		//List<Exam> exams = (List<Exam>) context.getBean("exams");//ExamÀ» Á¦´©¸¯À¸·Î ¹Ş´Â ÄÃ·º¼Ç »ı¼º 
+		console.print(); //ê·¸ë¦¬ë“œë¡œ ì¶œë ¥
+		//List<Exam> exams = (List<Exam>) context.getBean("exams");//Examì„ ì œëˆ„ë¦­ìœ¼ë¡œ ë°›ëŠ” ì»¬ë ‰ì…˜ ìƒì„± 
 		
-		//for(Exam e :exams)//¸®½ºÆ® Ãâ·Â
+		//for(Exam e :exams)//ë¦¬ìŠ¤íŠ¸ ì¶œë ¥
 		//	System.out.println(e);
 		
 	}

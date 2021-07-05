@@ -1,12 +1,14 @@
+
 package spring.di.entity;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-@Component
 public class SongExam implements Exam {
-	/*exam ÀÎÅÍÆäÀÌ½º¸¦ »ó¼ÓÇÏ´Â Å¬·¡½º¾ß
-	 * ³»¿ëÀº °¢ °ú¸ñ¿¡´ëÇÑ º¯¼öµé ±×¸®°í ÀÎÅÍÆäÀÌ½º¿¡¼­ ±¸ÇöÇÑ
-	 * ³»¿ëµéÀ» ¿©±â¼­ ´Ù½Ã Àç±¸Çö Çß¾î ¾î·Á¿î ³»¿ëÀº ¾øÀ¸´Ï ÀÌÁ¤µµ¸¸ ¼³¸íÇÒ°Ô*/
+	/*exam ì¸í„°í˜ì´ìŠ¤ë¥¼ ìƒì†í•˜ëŠ” í´ë˜ìŠ¤ì•¼
+	 * ë‚´ìš©ì€ ê° ê³¼ëª©ì—ëŒ€í•œ ë³€ìˆ˜ë“¤ ê·¸ë¦¬ê³  ì¸í„°í˜ì´ìŠ¤ì—ì„œ êµ¬í˜„í•œ
+	 * ë‚´ìš©ë“¤ì„ ì—¬ê¸°ì„œ ë‹¤ì‹œ ì¬êµ¬í˜„ í–ˆì–´ ì–´ë ¤ìš´ ë‚´ìš©ì€ ì—†ìœ¼ë‹ˆ ì´ì •ë„ë§Œ ì„¤ëª…í• ê²Œ*/
+	@Value("20") //kor 20ìœ¼ë¡œ ì„¤ì •  
 	private int kor;
 	private int eng;
 	private int math;
@@ -15,7 +17,7 @@ public class SongExam implements Exam {
 		// TODO Auto-generated constructor stub
 	}
 	
-	//¸É¹öº¯¼ö ÃÊ±âÈ­ÇÏ´Â ÇÔ¼ö »ı¼º
+	//ë§´ë²„ë³€ìˆ˜ ì´ˆê¸°í™”í•˜ëŠ” í•¨ìˆ˜ ìƒì„±
 	public SongExam(int kor, int eng, int math, int com) {
 		this.kor = kor;
 		this.eng = eng;
@@ -67,7 +69,7 @@ public class SongExam implements Exam {
 		// TODO Auto-generated method stub
 		return total()/4.0f;
 	}
-	//tostring ÇÔ¼ö Ãß°¡
+	//tostring í•¨ìˆ˜ ì¶”ê°€
 	@Override
 	public String toString() {
 		return "SongExam [kor=" + kor + ", eng=" + eng + ", math=" + math + ", com=" + com + "]";

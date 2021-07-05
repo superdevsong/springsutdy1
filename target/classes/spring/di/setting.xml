@@ -10,8 +10,8 @@
 	
 	<context:component-scan base-package="spring.di.ui,spring.di.entity"/>
 
-	<!-- <bean  id ="exam" class="spring.di.entity.SongExam" p:kor="10" p:eng="10" p:math="20" p:com="20" />exam객체 추가 
-	<bean  id="exam2" class="spring.di.entity.SongExam" p:kor="10" p:eng="10" p:math="10" p:com="10" >exam객체 추가 
+	<bean  id ="exam" class="spring.di.entity.SongExam" p:kor="10" p:eng="10" p:math="20" p:com="20" /> 
+	<!-- <bean  id="exam2" class="spring.di.entity.SongExam" p:kor="10" p:eng="10" p:math="10" p:com="10" > 
 
 	
 	<constructor-arg name="kor" value="10"></constructor-arg>

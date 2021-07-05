@@ -3,7 +3,7 @@ package spring.di.entity;
 public interface Exam {
 	int total(); 
 	float avg();
-	/*exam ÀÎÅÍÆäÀÌ½º ¸¸µé¾î¼­ ÇÕ°è¿Í Æò±ÕÀ» ±¸ÇÏ´Â ÇÔ¼ö¸¦ ±¸ÇöÇØ³õ¾Ò¾î
-	 * ÀÎÅÍÆäÀÌ½º¸¦ ±¸ÇöÇØ ³õÀº°ÍÀÌ¹Ç·Î ´Ù¸¥°÷¿¡¼­µµ ±¸ÇöÀ» ÇØ³õ¾Æ¾ßµÇÁö
+	/*exam ì¸í„°íŽ˜ì´ìŠ¤ ë§Œë“¤ì–´ì„œ í•©ê³„ì™€ í‰ê· ì„ êµ¬í•˜ëŠ” í•¨ìˆ˜ë¥¼ êµ¬í˜„í•´ë†“ì•˜ì–´
+	 * ì¸í„°íŽ˜ì´ìŠ¤ë¥¼ êµ¬í˜„í•´ ë†“ì€ê²ƒì´ë¯€ë¡œ ë‹¤ë¥¸ê³³ì—ì„œë„ êµ¬í˜„ì„ í•´ë†“ì•„ì•¼ë˜ì§€
 	 */
 }

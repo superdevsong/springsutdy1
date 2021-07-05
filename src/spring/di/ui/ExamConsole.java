@@ -3,9 +3,9 @@ package spring.di.ui;
 import spring.di.entity.Exam;
 
 public interface ExamConsole {
-	/*º¸¸é ´ëÃæ ¸Õ¶æÀÎÁö ¾Ë°ÚÁö¸¸
-	 * setExamÀ» ÅëÇØ¼­ ¾Õ¿¡¼­ ±¸ÇöÇÑ ÀÎÅÍÆäÀÌ½º examÀÇ ¼ºÀûµéÀ» ¹Þ°í
-	 * ±×°ÍÀ» print·Î Ãâ·ÂÇÑ´Ù´Â³»¿ëÀÌ¾ß
+	/*ë³´ë©´ ëŒ€ì¶© ë¨¼ëœ»ì¸ì§€ ì•Œê² ì§€ë§Œ
+	 * setExamì„ í†µí•´ì„œ ì•žì—ì„œ êµ¬í˜„í•œ ì¸í„°íŽ˜ì´ìŠ¤ examì˜ ì„±ì ë“¤ì„ ë°›ê³ 
+	 * ê·¸ê²ƒì„ printë¡œ ì¶œë ¥í•œë‹¤ëŠ”ë‚´ìš©ì´ì•¼
 	 * */
 	void print();
 
