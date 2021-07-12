@@ -9,15 +9,19 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 	
 
-	<bean  id ="target" class="spring.aop.entity.SongExam" p:kor="1" p:eng="1" p:math="1" p:com="1" /> 
+	<bean  id ="target" class="spring.aop.entity.SongExam" p:kor="101" p:eng="1" p:math="1" p:com="1" /> 
 	<bean id = "logAroundAdvice" class="spring.aop.advice.LogAroundAdvice"></bean>
 	<bean id = "logBeforeAdvice" class="spring.aop.advice.LogBeforeAdvice"></bean>
+	<bean id = "logAfterReturningAdvice" class="spring.aop.advice.LogAfterReturningAdvice"></bean>
+	<bean id = "logAfterThrowingAdvice" class="spring.aop.advice.LogAfterThrowingAdvice"></bean>
 	<bean id="exam" class="org.springframework.aop.framework.ProxyFactoryBean">
 	<property name="target" ref="target"></property><!--타겟 어떤객체를 사용할건지-->
 	<property name="interceptorNames" ><!-- 핸들러 삽입  -->
 	<list>
 	<value>logAroundAdvice</value>
 	<value>logBeforeAdvice</value><!--ref해야될거같지만 리스트 자체가 참조열이므로 value넣어도 상관없음   -->
+	<value>logAfterReturningAdvice</value>
+	<value>logAfterThrowingAdvice</value>
 	</list> 
 	</property>
 	</bean>

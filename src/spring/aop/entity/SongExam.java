@@ -21,6 +21,7 @@ public class SongExam implements Exam {
 		this.math = math;
 		this.com = com;
 	}
+	
 
 
 	public int getKor() {
@@ -58,6 +59,8 @@ public class SongExam implements Exam {
 	@Override
 	public int total() {
 		int result = kor+eng+math+com; 
+		if(kor > 100) 
+			throw new IllegalArgumentException("유효하지않은 국어점수");//백점 넘기면 예외 발생
 		
 		return result;
 	}
