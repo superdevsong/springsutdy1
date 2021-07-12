@@ -35,7 +35,7 @@ public class Program {
 //					@Override
 //					public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 //						long start = System.currentTimeMillis();//현재 시간 밀리세컨단위로!!
-//						Object result = method.invoke(exam, args);
+//						Object result = x  
 //						try {
 //							Thread.sleep(200);//200ms초 쉼 
 //						} catch (InterruptedException e) {
