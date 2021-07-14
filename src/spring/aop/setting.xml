@@ -17,17 +17,50 @@
 	
 	
 	
+	<!-- 이젠 안사용할 코드 
 	<bean id = "classicPointCut" class="org.springframework.aop.support.NameMatchMethodPointcut">
-	<property name = "mappedName" value = "total"/><!--total만 프록시 사용  -->
+	<property name = "mappedName" value = "total"/>total만 프록시 사용 
 	</bean>
 	<bean id = "classicBeforeAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
 	<property name = "advice" ref = "logBeforeAdvice"/>
-	<property name = "pointcut" ref = "classicPointCut"/><!-- 위에 Pointcut을 적용하는 BeforeAdvisor생성 -->
+	<property name = "pointcut" ref = "classicPointCut"/>위에 Pointcut을 적용하는 BeforeAdvisor생성
 	</bean>
 	<bean id = "classicAroundAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
 	<property name = "advice" ref = "logAroundAdvice"/>
-	<property name = "pointcut" ref = "classicPointCut"/><!-- 위에 Pointcut을 적용하는 AroundAdvisor생성 -->
+	<property name = "pointcut" ref = "classicPointCut"/> 위에 Pointcut을 적용하는 AroundAdvisor생성 
 	</bean>
+	 -->
+	 
+	 
+	<!-- 아래에 패턴형으로 바꾸기위해 주석처리 한 것 
+	
+	 <bean id = "classicBeforeAdvisor" class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+	<property name = "advice" ref = "logBeforeAdvice"/>
+	<property name = "mappedName" value = "total"/> 하나만 사용할
+	<property name = "mappedNames">여러개 사용할때 
+	<list>
+	<value>total</value>
+	<value>avg</value>
+	</list>
+	</property>
+		</bean>
+		
+		 -->
+		<bean id = "classicBeforeAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+	<property name = "advice" ref = "logBeforeAdvice"/>
+	<property name = "patterns"><!-- 패턴을 사용할때 --> 
+	<list>
+	<value>.*to.*</value><!-- to를 포함한 함수 Pointcut 생성 및 지 -->
+	</list>
+	</property>
+		</bean>
+		
+	<bean id = "classicAroundAdvisor" class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+	<property name = "advice" ref = "logAroundAdvice"/>
+	<property name = "mappedName" value = "total"/>  
+	</bean>
+	
+	
 	<bean id="exam" class="org.springframework.aop.framework.ProxyFactoryBean">
 	<property name="target" ref="target"></property><!--타겟 어떤객체를 사용할건지-->
 	<property name="interceptorNames" ><!-- 핸들러 삽입  -->
