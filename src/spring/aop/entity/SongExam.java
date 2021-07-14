@@ -55,7 +55,7 @@ public class SongExam implements Exam {
 	public void setCom(int com) {
 		this.com = com;
 	}
-
+	
 	@Override
 	public int total() {
 		int result = kor+eng+math+com; 

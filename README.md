@@ -1,16 +1,19 @@
-뉴렉처 스프링 aop 6강 내용입니다. 주제는 어노테이션 11강에서도 말했지만 혹시 히스토리를 통해 제 과거 스프링 공부를 보신다면
+뉴렉처 스프링 aop 7강 내용입니다. 주제는 어노테이션 11강에서도 말했지만 혹시 히스토리를 통해 제 과거 스프링 공부를 보신다면
 README.AD는 RAW로 봐주시기 바랍니다. 과거에는 지금처럼 태그를 보이게 해놓지않아서 안보일겁니다.
 읽기전에! 제가 이해하기위해 작성한 글이므로 반말 존댓말이 섞일수 있으며 맞춤법이 잘 맞지 않을수 있으므로 양해 부탁드립니다. 그럼 설명ㄱ!
 그리고 좀 지저분해서 그전 주석내용들 몇개는 지웠어요 보실거라면 히스토리 보시면됩니다!!!
 
 ---------------------------------------------------------------------------------------------------------
-오늘은 AfterRetunning과 AfterThrowing cross-cutting Concern에 대해서 배웠다. AfterReturning은 사용자로직 사용한 이후에 넣는 개발자 로직이고 AfterThrowing은 사용자 객체 사용중에 예외가 발생하였을때 사용하는 개발자 로직처리이다.
-이제 코드를 보겠다. 역시나 그전 강의와 같이 새로운 로직을 추가해야하기에 setting.xml에 핸드러로 사용할 bean AfterReturning 과 AfterThrowing을 추가한것을 볼수있다. 그전에도 비슷하게 설명했기에 xml설명은 여기서 끝
-다음 AfterReturng클래스를 먼저 보겠다. AfterReturning같은 경우 인터페이스로 AfterReturnigAdvice를 상속하고 afterReturning메서드를 오버로딩 한것을 볼수있다. 이쯤에서 before 와 around  afterreturning코드를 다시 설명하자면 around 같은 경우 앞뒤로 개발자의 로직을 넣으므로 중간에 사용자의 로직실행결과를 알기 위해 return값을 받는 방면 afterreturning과 before은 개발자의 로직이 사용자 로직의 시작전 끝난후에 들어가기에 따로 리턴값은 안받는것을 확인할수있다. 또 before는 사용자로직의 결과값을 모르지만 afterreturning같은 경우에는 사용자로직의 뒤에 옮으로 return값을 확인할수있다.
-그래서 afterretuning 핸들러에 결과값과 함수의 종류를 확인할수있는 코드를 넣었으니 확인하기 바란다.(만약 이프로젝트를 xml수정없이 실행한다면 에러가 날것이다. 뒤에 afterThrowing을 확인하기위해서 일부러 illegalException이 뜨게 해놓았다. 그러니 확인할거라면 xml에 있는 p:kor값을 100보다 작게 수정하기 바란다.)
-다음 afterThrowing이다 after Throwing은 위에서 말한데로 사용자 로직의 예외처리를 위한
-핸들러이다. afterThrowing의 코드를 구현하면 다른것과 다르게 구현해야될 메서드가 없다. 그 이유는
-명확하게 어떤 예외가 발생할지 모르기 때문이다. 그래서 내가 직접 인터페이스 함수중 하나를 구현하였다.
-내용은 illegalException이 발생할시 특정 내용을 출력하라는 내용이다.
-예외를 발생시키기위해 SongExam에 백점을 넘기면 예외를 발생시키는 코드를 추가하였다.
-결과를 보면 예외메시지와 잘뜨는것을 확인할수있다.
+오늘은 Point cuts라는것을 배웠어요. Point cuts를 배우기전에 Weaving 과 Join Point를 먼저 학습하게 되는데요. 내용은 이렇습니다. 저희가 cross-cutting concern을 Core concern에 넣잖아요 근데 이 작업을 어떤 사물에 비유하자면 마치 뜨개질하는거같다고 해요. 
+다시 설명하자면 이런 겉다리업무를 꽂아넣는 과정을 좀 뜨개질하는거 같다고 해서 이 행위를
+뜨개징 Weaving이라고 합니다. 그리고 이 Weaving을 했을때 Weaving의 대상 즉 주업무 사용자의 관점에서의 일을 JoinPoint라고 합니다. 그럼여기서 Point Cuts란 무엇일까요
+Join Point는 하나일수도있지만 저희가 프로젝트를 해봐서 아시겠지만 사용되는 모든함수에 적용이 되요. (ex 저번 프로젝트에서 total과 avg둘다 Weaving했죠??) 여기서 짐작이 슬슬 가실겁니다.
+Point cuts는 이런 Join Point를 잘라서 다른 일부분만 Weaving 할수있는 설정 정보를 말해요!!
+이제 코드 설명하겠습니다 이번코드는 setting.xml만 변경되어 있습니다.
+새로 추가된 빈이 있는데요. 첫번째로 id가 classicPointCut인 빈부터 설명하겠습니다. 
+classicPointCut 빈은 앞에서 말한 Pointcut을 구현하기 위한 빈인데요. class는 참고해주시기 바랍니다. 혹시 작성하시다가 외우기가 힘드시다면 자바코드에서 작성하시면 자동완성으로 되니까 더 편할겁니다.
+classicPointCut빈은 name이 mappedName인 property를 갖는데요. 이것은 setter 함수를 호출하는 정해진 형식이므로 꼭 name은 mappedName 으로 해주셔야합니다. 뜻은 value 값만 Weaving을 적용하게 한다는 뜻입니다. 근데 이것만 쓴다고 Point cut을 제대로 사용하는게 아닌데요.
+다른 어드바이저에 끼워서 사용해야합니다. 코드는 보시면 바로이해할겁니다. 예시로 id가 classicBeforeAdvisor인 빈을 보시면 name이 advice pointcut인 property가 있을 것입니다. 
+이거또한 정해진 setter가있기에 꼭 name은 위에와 같은 형식에 따라야하구요. ref값을 넣는데 이것을 해석하자면 setAdvice를해서 사용할 advice를지정하고 setPointcut을 해서 사용할 Pointcut을 지정하는겁니다.
+이렇게 만들어진 classicAdvisor을 id가 exam인 빈에 interceptorNames 프로퍼티에 리스트에
+해당하는 어드바이저를 갈아 끼워주면 됩니다. 즉 제가 만든 classicBeforeAdvisor이나 classicAroundAdvisor을 logBeforeAdvice logAroundAdvice와 바꿔주면 되는것이죠. 이로써 total만 Weaving을 하는것을 확인할수 있을것입니다.
